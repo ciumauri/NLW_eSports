@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import { useEffect, useState } from 'react';
 import { Image, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -19,10 +21,9 @@ export function Home() {
   }
 
   useEffect(() => {
-    fetch('http://192.168.0.120:3333/games')
-    //fetch('http://172.22.7.195:3333/games')
-      .then(response => response.json())
-      .then(data => setGames(data))
+    //axios('http://192.168.0.120:3333/games')
+    axios('http://172.22.7.195:3333/games')
+      .then(response => setGames(response.data))
   }, []);
 
   return (

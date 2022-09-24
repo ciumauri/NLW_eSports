@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import { useEffect, useState } from 'react';
 import { Text, FlatList, Image, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -26,10 +28,9 @@ export function Game() {
   }
 
   useEffect(() => {
-    fetch(`http://192.168.0.120:3333/games/${game.id}/ads`)
-    //fetch('http://172.22.7.195:3333/games')
-      .then(response => response.json())
-      .then(data => setDuos(data));
+    //axios(`http://192.168.0.120:3333/games/${game.id}/ads`)
+    axios(`http://172.22.7.195:3333/games/${game.id}/ads`)
+      .then(response => setDuos(response.data))
   }, []);
 
   return (
